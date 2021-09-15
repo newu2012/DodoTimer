@@ -57,10 +57,73 @@ class TimerText extends StatelessWidget {
     final secondsStr =
         (duration % secondsInMinute).floor().toString().padLeft(2, '0');
 
-    return Text(
-      '$hoursStr:$minutesStr:$secondsStr',
-      style: Theme.of(context).textTheme.headline2,
+    var timeStyle = Theme.of(context).textTheme.headline2;
+    var timeSize = timeStyle?.fontSize?.toDouble();
+    timeSize ??= 6;
+
+    Row row = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SizedBox(
+          width: 70,
+          height: 200,
+          child: ListWheelScrollView.useDelegate(
+            itemExtent: 65,
+            onSelectedItemChanged: (val) {},
+            controller: FixedExtentScrollController(initialItem: 0),
+            childDelegate: ListWheelChildLoopingListDelegate(
+              children: List<Widget>.generate(
+                hoursInDay,
+                (index) => Text(
+                  '$index', style: timeStyle,
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 70,
+          height: 200,
+          child: ListWheelScrollView.useDelegate(
+            itemExtent: 65,
+            onSelectedItemChanged: (val) {},
+            controller: FixedExtentScrollController(initialItem: 0),
+            childDelegate: ListWheelChildLoopingListDelegate(
+              children: List<Widget>.generate(
+                minutesInHour,
+                    (index) => Text(
+                  '$index', style: timeStyle,
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 70,
+          height: 200,
+          child: ListWheelScrollView.useDelegate(
+            itemExtent: 65,
+            onSelectedItemChanged: (val) {},
+            controller: FixedExtentScrollController(initialItem: 0),
+            childDelegate: ListWheelChildLoopingListDelegate(
+              children: List<Widget>.generate(
+                secondsInMinute,
+                    (index) => Text(
+                  '$index', style: timeStyle,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
+
+    // Text(
+    //   '$hoursStr:$minutesStr:$secondsStr',
+    //   style: Theme.of(context).textTheme.headline2,
+    // );
+
+    return row;
   }
 }
 
