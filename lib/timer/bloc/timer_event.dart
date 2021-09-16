@@ -7,6 +7,12 @@ abstract class TimerEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class TimerChanged extends TimerEvent {
+  const TimerChanged({required this.type, required this.duration});
+  final String type;
+  final int duration;
+}
+
 class TimerStarted extends TimerEvent {
   const TimerStarted({required this.duration});
   final int duration;
