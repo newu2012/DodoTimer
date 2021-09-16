@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dodo_timer/ticker.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 part 'timer_event.dart';
 part 'timer_state.dart';
