@@ -74,6 +74,7 @@ class TimerText extends StatelessWidget {
                 height: 200,
                 child: ListWheelScrollView.useDelegate(
                   itemExtent: 65,
+                  diameterRatio: 1.5,
                   physics: const FixedExtentScrollPhysics(),
                   controller: FixedExtentScrollController(
                     initialItem: int.parse(hoursStr),
@@ -106,6 +107,7 @@ class TimerText extends StatelessWidget {
                 height: 200,
                 child: ListWheelScrollView.useDelegate(
                   itemExtent: 65,
+                  diameterRatio: 1.5,
                   physics: const FixedExtentScrollPhysics(),
                   controller: FixedExtentScrollController(
                     initialItem: int.parse(minutesStr),
@@ -138,6 +140,7 @@ class TimerText extends StatelessWidget {
                 height: 200,
                 child: ListWheelScrollView.useDelegate(
                   itemExtent: 65,
+                  diameterRatio: 1.5,
                   physics: const FixedExtentScrollPhysics(),
                   controller: FixedExtentScrollController(
                     initialItem: int.parse(secondsStr),
@@ -163,11 +166,6 @@ class TimerText extends StatelessWidget {
               ),
             ],
           );
-
-          // Text(
-          //   '$hoursStr:$minutesStr:$secondsStr',
-          //   style: Theme.of(context).textTheme.headline2,
-          // );
         } else if (state is! TimerInitial) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
